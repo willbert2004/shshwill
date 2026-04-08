@@ -303,7 +303,7 @@ export default function GroupManagement() {
     finally { setLoading(false); }
   };
 
-  const CreateGroupDialog = () => (
+  const createGroupDialog = (
     <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
       <DialogTrigger asChild>
         <Button><Plus className="h-4 w-4 mr-2" />Create Group</Button>
@@ -347,11 +347,11 @@ export default function GroupManagement() {
             <div className="flex gap-2">
               <div className="flex-1">
                 <Input placeholder="Full Name" value={newMemberName} onChange={(e) => setNewMemberName(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && addGroupMember()} />
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addGroupMember(); } }} />
               </div>
               <div className="flex-1">
                 <Input placeholder="Registration Number" value={newMemberRegNumber} onChange={(e) => setNewMemberRegNumber(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && addGroupMember()} />
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addGroupMember(); } }} />
               </div>
               <Button type="button" onClick={addGroupMember} variant="outline"><Plus className="h-4 w-4" /></Button>
             </div>
