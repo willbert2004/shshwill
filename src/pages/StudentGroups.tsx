@@ -22,8 +22,8 @@ export default function StudentGroups() {
     try {
       const { data: profile, error } = await supabase.from("profiles").select("user_type").eq("user_id", user!.id).single();
       if (error) throw error;
-      if (profile.user_type !== 'student') {
-        toast({ title: "Access denied", description: "Students only", variant: "destructive" });
+      if (profile.user_type !== 'student' && profile.user_type !== 'admin') {
+        toast({ title: "Access denied", description: "Students and admins only", variant: "destructive" });
         navigate("/"); return;
       }
     } catch (error: any) {

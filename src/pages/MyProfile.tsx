@@ -68,7 +68,15 @@ export default function MyProfile() {
     if (!user) return;
     setSaving(true);
     try {
-      const updates: Record<string, any> = {
+      const updates: {
+        full_name?: string;
+        school?: string;
+        department?: string;
+        phone_number?: string | null;
+        office_hours?: string | null;
+        research_areas?: string[];
+        max_projects?: number;
+      } = {
         full_name: form.full_name.trim(),
         school: form.school.trim(),
         department: form.department.trim(),
