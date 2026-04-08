@@ -69,7 +69,7 @@ Deno.serve(async (req) => {
     }
 
     // Reset the user's password using admin API
-    const { error } = await callerClient.auth.admin.updateUser(target_user_id, {
+    const { error } = await (callerClient.auth.admin as any).updateUser(target_user_id, {
       password: new_password,
     });
 
