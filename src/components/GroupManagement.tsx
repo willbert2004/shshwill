@@ -549,7 +549,7 @@ export default function GroupManagement() {
       <section>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">Student Groups ({groups.length})</h2>
-          {(userType === 'student' || userType === 'admin') && <CreateGroupDialog />}
+          {(userType === 'student' || userType === 'admin') && createGroupDialog}
         </div>
         
         {groups.length === 0 && userType === 'student' && (
